@@ -1,14 +1,21 @@
 const http = require("http")
 const fs = require("fs")
+const url = require("url")
+
 const myServer = http.createServer((req, res) => {
-    const log = `${Date.now()} : ${req.url} \n`;
+    if (req.url === "/fevicon.ico") return res.end();
+    const log = `${Date.now()} : ${req.url} | mehtod ==> ( ${req.method} ) \n`;
+    const myUrl = url.parse(req.url, true);
+    console.log(myUrl);
+    
     fs.appendFile('httpUrl.txt', log , (err) => {
-        switch(req.url){
+        switch(myUrl.pathname){
             case '/':
                 res.end("welcome to my HomePage");
                 break;
             case '/about':
-                res.end("welcome to my About Page");
+                const queryParameter = myUrl.query.name;
+                res.end(`welcome, ${queryParameter}`);
                 break;
             case '/contact':
                 res.end("welcome to my Contact Page");
