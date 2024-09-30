@@ -2,7 +2,7 @@ const http = require("http")
 const fs = require("fs")
 const url = require("url")
 
-const myServer = http.createServer((req, res) => {
+function myHandler( req, res) {
     if (req.url === "/fevicon.ico") return res.end();
     const log = `${Date.now()} : ${req.url} | mehtod ==> ( ${req.method} ) \n`;
     const myUrl = url.parse(req.url, true);
@@ -29,8 +29,9 @@ const myServer = http.createServer((req, res) => {
         
     })
     // console.log(req.client)
-    
-});
+}
+
+const myServer = http.createServer(myHandler)
 
 myServer.listen(8080, () => {console.log("server started");
 })
