@@ -1,4 +1,4 @@
-let str = "a man, a plan, a canal, panama";
+let str = "+5+";
 
 function reverseString(str){
     let reStr = "";
@@ -10,8 +10,7 @@ function reverseString(str){
 }
 
 function isPalindrome(str){
-    let cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-    if(reverseString(cleanedStr) === cleanedStr){
+   if(reverseString(str) === str){
         return true;
     }else{
         return false;

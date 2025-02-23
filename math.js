@@ -7,8 +7,8 @@ function mul(a,b) {
 }
 
 module.exports = {
-add,
-mul  
+    add,
+    mul  
 }
 
 exports.add = (a,b) => a+b //{ add: [Function (anonymous)] }
